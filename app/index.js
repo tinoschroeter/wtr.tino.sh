@@ -1,10 +1,17 @@
 const weather = require("weather-js");
 const chalk = require("chalk");
 
+const morgan = require("morgan");
+const cache = require("express-memjs-cache");
 const express = require("express");
 const app = express();
 
 const port = process.env.PORT | 3000;
+
+app.use(morgan("combined"));
+
+app.get("/health", (req, res) => res.send("OK"));
+app.use(cache({ cacheMaxAge: 600 })); // chache for 10 Minutes
 
 const getWeather = (req, res) => {
   const city = req.params.id || "hamburg";
@@ -13,8 +20,11 @@ const getWeather = (req, res) => {
   weather.find(search, (err, result) => {
     if (err) {
       console.error(err);
-      return res.status(500).send(err);
+      return res.status(500).send("ups", err);
     }
+
+    if (result.length === 0)
+      return res.status(400).send(`No results found for ${city}!!\n`);
 
     const data = result[0]?.current;
     const date = new Date();
@@ -43,7 +53,6 @@ const getWeather = (req, res) => {
   });
 };
 
-app.get("/health", (req, res) => res.send("OK"));
 app.get("/", getWeather);
 app.get("/:id", getWeather);
 

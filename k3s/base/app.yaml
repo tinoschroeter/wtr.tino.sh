@@ -17,7 +17,9 @@ spec:
       containers:
       - name: wtr-backend
         image: registry.tino.sh/wtr-app
-        env:
+        envFrom:
+        - configMapRef:
+            name: wtr-conf
         resources:
           requests:
             memory: "50Mi"
@@ -37,5 +39,14 @@ spec:
             path: /health
             port: 3000
           initialDelaySeconds: 5
-          periodSeconds: 20
-          failureThreshold: 2
+          periodSeconds: 10
+          failureThreshold: 1
+      - name: memcached
+        image: memcached:1.6.17
+        resources:
+          requests:
+            memory: "40Mi"
+            cpu: "60m"
+          limits:
+            memory: "90Mi"
+            cpu: "100m"

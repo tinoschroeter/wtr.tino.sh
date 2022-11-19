@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wtr-conf
+  namespace: wtr
+data:
+  MEMCACHIER_SERVERS: "localhost"
