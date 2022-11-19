@@ -1,0 +1,5 @@
+namespace: wtr
+resources:
+  - service.yml
+  - app.yaml
+

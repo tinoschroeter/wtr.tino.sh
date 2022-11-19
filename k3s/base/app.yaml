@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wtr-backend
+  name: wtr-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wtr-backend
+  template:
+    metadata:
+      labels:
+        app: wtr-backend
+    spec:
+      containers:
+      - name: wtr-backend
+        image: registry.tino.sh/wtr-app
+        env:
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "100m"
+          limits:
+            memory: "64Mi"
+            cpu: "300m"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 2
+          periodSeconds: 30
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 20
+          failureThreshold: 2

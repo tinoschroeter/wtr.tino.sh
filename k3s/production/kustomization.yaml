@@ -1,0 +1,4 @@
+namespace: wtr
+bases:
+  - ../base
+  - ingress.yaml
