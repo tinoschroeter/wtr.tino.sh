@@ -20,7 +20,7 @@ const getWeather = (req, res) => {
   weather.find(search, (err, result) => {
     if (err) {
       console.error(err);
-      return res.status(500).send("ups", err);
+      return res.status(500).send("ups\n", err);
     }
 
     if (result.length === 0)
@@ -47,7 +47,9 @@ const getWeather = (req, res) => {
       chalk.bold(
         `${city.toUpperCase()}: ${icon[picker]} ${
           data.skytext
-        } | ${data.temperature.toString()} C°\n`
+        } | ${data.temperature.toString()} C° | ${data.winddisplay} | ${
+          data.humidity
+        } %\n`
       )
     );
   });
