@@ -41,7 +41,7 @@ const getWeather = (req, res) => {
     if (picker === 0 && (date.getHours() > 20 || date.getHours() < 7))
       picker = 6;
 
-    res.setHeader("Content-Type", "plain/txt");
+    res.setHeader("Content-Type", "text/plain");
     res.set("X-Usage", `curl ${req.hostname}/city`);
     res.send(
       chalk.bold(
