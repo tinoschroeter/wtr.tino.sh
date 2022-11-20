@@ -7,4 +7,4 @@
 
 ![wtr](wtr.gif)
 
-[build with vhs](https://github.com/charmbracelet/vhs#vhs)
+[Gif was created with VHS](https://github.com/charmbracelet/vhs#vhs)
