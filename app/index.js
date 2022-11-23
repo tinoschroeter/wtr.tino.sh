@@ -43,6 +43,7 @@ const getWeather = (req, res) => {
 
     res.set("Content-Type", "text/plain");
     res.set("X-Usage", `curl ${req.hostname}/city`);
+    res.set("X-Fork-me", "https://github.com/tinoschroeter/wtr.tino.sh");
 
     const pipe = chalk.blue("|");
 
