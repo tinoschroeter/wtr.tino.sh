@@ -41,15 +41,18 @@ const getWeather = (req, res) => {
     if (picker === 0 && (date.getHours() > 20 || date.getHours() < 7))
       picker = 6;
 
-    res.setHeader("Content-Type", "text/plain");
+    res.set("Content-Type", "text/plain");
     res.set("X-Usage", `curl ${req.hostname}/city`);
+
+    const pipe = chalk.blue("|");
+
     res.send(
       chalk.bold(
-        `${city.toUpperCase()}: ${icon[picker]} ${
+        `${chalk.blue(city.toUpperCase())}: ${icon[picker]} ${
           data.skytext
-        } | ${data.temperature.toString()} C° | ${data.winddisplay} | ${
-          data.humidity
-        } %\n`
+        } ${pipe} ${data.temperature.toString()} tmp: C° ${pipe} wind: ${
+          data.winddisplay
+        } ${pipe} hum: ${data.humidity} %\n`
       )
     );
   });

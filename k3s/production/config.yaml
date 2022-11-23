@@ -5,3 +5,4 @@ metadata:
   namespace: wtr
 data:
   MEMCACHIER_SERVERS: "localhost"
+  FORCE_COLOR: "3"

@@ -1,7 +1,7 @@
 # Where should we write the GIF?
 Output wtr.gif
 
-Set FontSize 31
+Set FontSize 23
 Set Width 1200
 Set Height 600
 
