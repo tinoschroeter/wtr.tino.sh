@@ -51,7 +51,7 @@ const getWeather = (req, res) => {
       chalk.bold(
         `${chalk.blue(city.toUpperCase())}: ${icon[picker]} ${
           data.skytext
-        } ${pipe} ${data.temperature.toString()} tmp: C° ${pipe} wind: ${
+        } ${pipe} tmp: ${data.temperature.toString()} C° ${pipe} wind: ${
           data.winddisplay
         } ${pipe} hum: ${data.humidity} %\n`
       )
