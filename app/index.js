@@ -17,7 +17,7 @@ app.use(nocache());
 app.use(morgan("combined"));
 
 app.get("/health", (req, res) => res.send("OK"));
-app.use(cache({ cacheMaxAge: 3600 })); // chache for 60 Minutes
+app.use(cache({ cacheMaxAge: 600 })); // cache for 10 Minutes
 
 const getWeather = (kind) => {
   return (req, res) => {
