@@ -21,7 +21,7 @@ app.use(cache({ cacheMaxAge: 600 })); // cache for 10 Minutes
 
 const getWeather = (kind) => {
   return (req, res) => {
-    const city = req.params.id || "hamburg";
+    const city = req.params.id || "hamburg_germany";
     const search = { search: city, degreeType: "C" };
 
     weather
