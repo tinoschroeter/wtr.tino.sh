@@ -15,38 +15,38 @@ spec:
         app: wtr-backend
     spec:
       containers:
-      - name: wtr-backend
-        image: registry.tino.sh/wtr-app
-        envFrom:
-        - configMapRef:
-            name: wtr-conf
-        resources:
-          requests:
-            memory: "50Mi"
-            cpu: "100m"
-          limits:
-            memory: "64Mi"
-            cpu: "300m"
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 2
-          periodSeconds: 30
-          failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          failureThreshold: 1
-      - name: memcached
-        image: memcached:1.6.17
-        resources:
-          requests:
-            memory: "40Mi"
-            cpu: "60m"
-          limits:
-            memory: "90Mi"
-            cpu: "100m"
+        - name: wtr-backend
+          image: registry.tino.sh/wtr-app
+          envFrom:
+            - configMapRef:
+                name: wtr-conf
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "100m"
+            limits:
+              memory: "64Mi"
+              cpu: "300m"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 4
+            periodSeconds: 30
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 1
+        - name: memcached
+          image: memcached:1.6.17
+          resources:
+            requests:
+              memory: "40Mi"
+              cpu: "60m"
+            limits:
+              memory: "90Mi"
+              cpu: "100m"

@@ -77,6 +77,15 @@ const getWeather = (kind) => {
           res.setHeader("Content-Type", "image/svg+xml");
           return res.send(svg);
         }
+
+        if (kind === "api") {
+          return res.send({
+            city,
+            degreeType: "C",
+            temperature: `${data.temperature.toString()}`,
+            skytext: data.skytext,
+          });
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -88,6 +97,7 @@ const getWeather = (kind) => {
 app.get("/", getWeather("cli"));
 app.get("/:id", getWeather("cli"));
 app.get("/button/:id", getWeather("button"));
+app.get("/api/:id", getWeather("api"));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
