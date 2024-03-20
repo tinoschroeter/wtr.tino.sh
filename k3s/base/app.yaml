@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wtr-backend
-          image: registry.tino.sh/wtr-app
+          image: registry.tino.sh/wtr-app-1
           envFrom:
             - configMapRef:
                 name: wtr-conf
@@ -32,14 +32,14 @@ spec:
               path: /health
               port: 3000
             initialDelaySeconds: 4
-            periodSeconds: 30
+            periodSeconds: 40
             failureThreshold: 3
           livenessProbe:
             httpGet:
               path: /health
               port: 3000
             initialDelaySeconds: 5
-            periodSeconds: 10
+            periodSeconds: 40
             failureThreshold: 1
         - name: memcached
           image: memcached:1.6.17

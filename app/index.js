@@ -16,7 +16,7 @@ const port = process.env.PORT | 3000;
 app.use(nocache());
 app.use(morgan("combined"));
 
-app.get("/health", (req, res) => res.send("OK"));
+app.get("/health", (_req, res) => res.send("OK"));
 app.use(cache({ cacheMaxAge: 600 })); // cache for 10 Minutes
 
 const getWeather = (kind) => {
@@ -58,8 +58,8 @@ const getWeather = (kind) => {
                 data.skytext
               } ${pipe} tmp: ${data.temperature.toString()} C° ${pipe} wind: ${
                 data.winddisplay
-              } ${pipe} hum: ${data.humidity} %\n`
-            )
+              } ${pipe} hum: ${data.humidity} %\n`,
+            ),
           );
         }
 
