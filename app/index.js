@@ -99,6 +99,10 @@ app.get("/:id", getWeather("cli"));
 app.get("/button/:id", getWeather("button"));
 app.get("/api/:id", getWeather("api"));
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
+
+module.exports = app;
