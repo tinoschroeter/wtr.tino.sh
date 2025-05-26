@@ -11,7 +11,7 @@ const cache = require("express-memjs-cache");
 const express = require("express");
 const app = express();
 
-const port = process.env.PORT | 3000;
+const port = process.env.PORT || 3000;
 
 app.use(nocache());
 app.use(morgan("combined"));
@@ -89,7 +89,7 @@ const getWeather = (kind) => {
       })
       .catch((err) => {
         console.error(err);
-        return res.status(500).send("ups\n", err);
+        return res.status(500).send(`ups\n${err}`);
       });
   };
 };
