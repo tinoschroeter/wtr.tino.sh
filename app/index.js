@@ -36,12 +36,12 @@ const getWeather = (kind) => {
         let picker = 0;
         const icon = ["", "☁️ ", "❄️ ", "☀️ ", "🌧️  ", "🌩️  ", "🌜"];
 
-        if (data.skytext.match(/[cC]loudy/g)) picker = 1;
-        if (data.skytext.match(/[iI]cy/g)) picker = 2;
-        if (data.skytext.match(/[sS]now/g)) picker = 2;
-        if (data.skytext.match(/[sS]un/g)) picker = 3;
-        if (data.skytext.match(/[rR]ain/g)) picker = 4;
-        if (data.skytext.match(/[tT]hunder/g)) picker = 5;
+        if (data?.skytext.match(/[cC]loudy/g)) picker = 1;
+        if (data?.skytext.match(/[iI]cy/g)) picker = 2;
+        if (data?.skytext.match(/[sS]now/g)) picker = 2;
+        if (data?.skytext.match(/[sS]un/g)) picker = 3;
+        if (data?.skytext.match(/[rR]ain/g)) picker = 4;
+        if (data?.skytext.match(/[tT]hunder/g)) picker = 5;
         if (picker === 0 && (date.getHours() > 20 || date.getHours() < 7))
           picker = 6;
 
