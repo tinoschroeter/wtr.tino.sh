@@ -6,6 +6,8 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     acme.cert-manager.io/http01-edit-in-place: "true"
     ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/limit-rps: "10" # Max 10 Requests pro Sekunde pro IP
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "5"
   name: wtr-ingress
 spec:
   rules:
